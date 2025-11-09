@@ -2,6 +2,8 @@ import express from "express";
 
 const app = express();
 
+app.use(express.json()); // middleware to parse JSON request bodies
+
 const PORT = process.env.PORT || 4000;
 
 // create a route 
@@ -29,6 +31,17 @@ app.get("/health", (req, res) => {
   // res.status(400).json({message: "Bad Request"});
 });
 
+
+app.post("/api/users", (req, res)=> {
+
+  console.log("POST request to /api/users endpoint");
+  // here body will show undefined unless we use a middleware to parse the request body
+  console.log("Request Body:", req.body); // to log the request body
+  console.log("Request Body name:", req.body.name); // to get value of specific field 'name' from request body
+
+  // send a JSON response back to the client
+  res.json({message: "User created successfully"});
+})
 
 
 
