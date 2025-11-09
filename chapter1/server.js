@@ -20,6 +20,9 @@ app.get("/hello", (req, res) => {
 // this method is used to check the health of our system
 // res.json() method is used to send a JSON response back to the client this is the most common way to send data in RESTful APIs
 app.get("/health", (req, res) => {
+  // console.log(req.query); // to log query parameters if any
+  // console.log(req.query.name); // to log specific query parameter 'name' if present
+
   res.json({message: "Server is healthy"})
 
   // this is another way to send a JSON response with a specific status code
